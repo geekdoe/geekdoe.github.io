@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Git," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="落叶焚いて野守の神を见し夜かな">
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta name="description" content="随手记的Git指令。">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git备忘录">
+<meta property="og:url" content="http://yoursite.com/2016/12/04/20161204Git备忘录/index.html">
 <meta property="og:site_name" content="踢树叶">
-<meta property="og:description" content="落叶焚いて野守の神を见し夜かな">
+<meta property="og:description" content="随手记的Git指令。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-03T10:17:38.695Z">
+<meta property="og:updated_time" content="2017-01-16T05:01:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="标签">
-<meta name="twitter:description" content="落叶焚いて野守の神を见し夜かな">
+<meta name="twitter:title" content="Git备忘录">
+<meta name="twitter:description" content="随手记的Git指令。">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/04/20161204Git备忘录/"/>
 
 
 
 
 
-  <title>标签 | 踢树叶</title>
+  <title>Git备忘录 | 踢树叶</title>
   
 
 
@@ -250,40 +251,178 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/04/20161204Git备忘录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="geekdoe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/boy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="踢树叶">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">标签</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 10 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Android/" style="font-size: 30px; color: #111">Android</a> <a href="/tags/Git/" style="font-size: 30px; color: #111">Git</a> <a href="/tags/GitHub/" style="font-size: 12px; color: #ccc">GitHub</a> <a href="/tags/Hexo/" style="font-size: 12px; color: #ccc">Hexo</a> <a href="/tags/Python/" style="font-size: 12px; color: #ccc">Python</a> <a href="/tags/Volley/" style="font-size: 12px; color: #ccc">Volley</a> <a href="/tags/数据库/" style="font-size: 12px; color: #ccc">数据库</a> <a href="/tags/杂谈/" style="font-size: 12px; color: #ccc">杂谈</a> <a href="/tags/爬虫/" style="font-size: 12px; color: #ccc">爬虫</a> <a href="/tags/诗歌/" style="font-size: 12px; color: #ccc">诗歌</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Git备忘录</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-04T11:01:35+08:00">
+                2016-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>随手记的Git指令。<a id="more"></a></p>
+<p>查看本地分支：<code>git branch</code></p>
+<p>查看远端分支：<code>git branch -r</code></p>
+<p>查看所有分支，包括本地和远程的：<code>git branch -a</code></p>
+<p>创建分支：<code>git branch &lt;name&gt;</code></p>
+<p>切换分支：<code>git checkout &lt;name&gt;</code></p>
+<p>创建+切换分支：<code>git checkout -b &lt;name&gt;</code></p>
+<p>合并某分支到当前分支：<code>git merge &lt;name&gt;</code></p>
+<p>删除分支：<code>git branch -d &lt;name&gt;</code></p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag"># Git</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/12/20161112Git版本回滚/" rel="next" title="Git版本回滚">
+                <i class="fa fa-chevron-left"></i> Git版本回滚
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/01/20170101新的一年，愿我们被世界温柔相待/" rel="prev" title="新的一年，愿我们被世界温柔相待">
+                新的一年，愿我们被世界温柔相待 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -292,6 +431,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
