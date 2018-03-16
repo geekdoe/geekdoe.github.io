@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/12/04/20161204Git%E5%A4%87%E5%BF%98%E5%BD%95/</loc>
+    
+    <lastmod>2018-03-16T12:04:58.943Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/about/index.html</loc>
     
     <lastmod>2018-02-07T14:26:15.539Z</lastmod>
@@ -68,13 +75,6 @@
     <loc>http://yoursite.com/2016/08/30/20160830Hexo-Github-%E6%90%AD%E5%BB%BA%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2/</loc>
     
     <lastmod>2017-02-06T04:24:54.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/12/04/20161204Git%E5%A4%87%E5%BF%98%E5%BD%95/</loc>
-    
-    <lastmod>2017-01-16T05:01:18.000Z</lastmod>
     
   </url>
   
