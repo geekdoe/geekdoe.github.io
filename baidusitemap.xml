@@ -4,6 +4,29 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/04/20/20170420Hibernate%E6%B5%85%E8%B0%88/</loc>
+    <lastmod>2018-03-20T15:56:26.021Z</lastmod>
+    <data>
+        <display>
+        <title>Hibernate浅谈</title>
+        <pubTime>2017-04-20T01:25:30.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>Hibernate</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://yoursite.com/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
     <loc>http://yoursite.com/2016/12/04/20161204Git%E5%A4%87%E5%BF%98%E5%BD%95/</loc>
     <lastmod>2018-03-16T12:04:58.943Z</lastmod>
     <data>
@@ -22,7 +45,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>http://yoursite.com/2017/05/21/20170521%E8%90%BD%E5%8F%B6%E7%84%9A/</loc>

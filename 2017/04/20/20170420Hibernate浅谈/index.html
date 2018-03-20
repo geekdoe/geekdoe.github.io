@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,Hibernate," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关于Hibernate的配置与介绍">
+<meta name="keywords" content="Java,Hibernate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hibernate浅谈">
+<meta property="og:url" content="http://yoursite.com/2017/04/20/20170420Hibernate浅谈/index.html">
+<meta property="og:site_name" content="踢树叶">
+<meta property="og:description" content="关于Hibernate的配置与介绍">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://og7aqw0sx.bkt.clouddn.com/image/jpg/Hibernate%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png">
+<meta property="og:updated_time" content="2018-03-20T15:56:26.021Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hibernate浅谈">
+<meta name="twitter:description" content="关于Hibernate的配置与介绍">
+<meta name="twitter:image" content="http://og7aqw0sx.bkt.clouddn.com/image/jpg/Hibernate%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/20/20170420Hibernate浅谈/"/>
+
+
+
+
+
+  <title>Hibernate浅谈 | 踢树叶</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">踢树叶</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/20/20170420Hibernate浅谈/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="geekdoe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/boy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="踢树叶">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hibernate浅谈</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-20T09:25:30+08:00">
+                2017-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>关于Hibernate的配置与介绍<a id="more"></a></p>
+<h1 id="Hibernate的执行流程"><a href="#Hibernate的执行流程" class="headerlink" title="Hibernate的执行流程"></a>Hibernate的执行流程</h1><p><img src="http://og7aqw0sx.bkt.clouddn.com/image/jpg/Hibernate%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png" alt="Hibernate01"></p>
+<h1 id="hibernate-cgt-xml常用配置"><a href="#hibernate-cgt-xml常用配置" class="headerlink" title="hibernate.cgt.xml常用配置"></a>hibernate.cgt.xml常用配置</h1><ol>
+<li><p>hibernate.show_sql<br>是否把Hibernate运行时的SQL语句输出到控制台，编码阶段便于测试。</p>
+</li>
+<li><p>hibernate.format_sql<br>输出到控制台的SQL语句是否进行排版，便于阅读。建议设置为true。</p>
+</li>
+<li><p>hbm2ddl.auto<br>可以帮助由java代码生成数据库脚本，进而生成具体的表结构。</p>
+<ul>
+<li>create<br>每次加载hibernate时都会删除上一次的生成的表，然后根据你的model类再重新来生成新表，哪怕两次没有任何改变也要这样执行。</li>
+<li>update<br>最常用的值，第一次加载Hibernate时根据model类会自动建立起表的结构（前提是先建立好数据库），以后加载hibernate时根据 model类自动更新表结构，即使表结构改变了但表中的行仍然存在不会删除以前的行。要注意的是当部署到服务器后，表结构是不会被马上建立起来的，是要等 应用第一次运行起来后才会。</li>
+<li>create-drop<br>每次加载Hibernate时根据model类生成表，但是sessionFactory一关闭,表就自动删除。</li>
+<li>validate<br>每次加载Hibernate时，验证创建数据库表结构，只会和数据库中的表进行比较，不会创建新表，但是会插入新值。</li>
+</ul>
+</li>
+<li><p>hibernate.default_schema<br>默认的数据库名<br>在生成表结构的时候给所有表名加前缀。</p>
+</li>
+<li><p>hibernate.dialect<br>配置Hibernate数据库方言，Hibernate可针对特殊的数据库进行优化。</p>
+</li>
+</ol>
+<p><em>注：hibernate的前缀可以省略，即hibernate.dialect等同于dialect</em></p>
+<h1 id="session简介"><a href="#session简介" class="headerlink" title="session简介"></a>session简介</h1><ul>
+<li>session可以理解为操作数据库的对象。</li>
+<li>session与connection，是多对一关系，每个session都有一个与之对应的connection，一个connection不同时刻可以供多个session使用。</li>
+<li>把对象保存在关系数据库中需要调用session的各种方法，如：save(),update(),delete(),createQuery()等。</li>
+</ul>
+<h1 id="transaction简介"><a href="#transaction简介" class="headerlink" title="transaction简介"></a>transaction简介</h1><p>Hibernate对数据的操作都是封装在事务当中，并且默认是非自动提交的方式。所以用session保存对象时，如果<br>不开启事务，并且手工提交事务，对象并不会真正保存在数据库中。</p>
+<p>如果想让Hibernate像jdbc那样自动提交事务，必须调用session对象的doWork()方法，获得jdbc的connection后，设置其为自动提交事务模式（注：通常不推荐这样做）。</p>
+<h1 id="session详解"><a href="#session详解" class="headerlink" title="session详解"></a>session详解</h1><h2 id="获得session对象"><a href="#获得session对象" class="headerlink" title="获得session对象"></a>获得session对象</h2><ol>
+<li>openSession</li>
+<li>getCurrentSession</li>
+</ol>
+<p>如果使用getCurrentSession需要在hibernate.cfg.xml文件中进行配置：<br>如果是本地事务（jdbc事务）<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.current_session_context_class"</span>&gt;</span>thread<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>如果是全局事务（jta事务）<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.current_session_context_class"</span>&gt;</span>jta<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="openSession和getCurrentSession的区别"><a href="#openSession和getCurrentSession的区别" class="headerlink" title="openSession和getCurrentSession的区别"></a>openSession和getCurrentSession的区别</h2><ol>
+<li>getCurrentSession再事务提交活着回滚之后会自动关闭，而openSession需要你手动关闭。如果使用openSession而没有手动关闭，多次之后会导致连接池溢出。</li>
+<li>openSession每次创建新的session对象，getCurrentSession使用现有的session对象。</li>
+</ol>
+<h1 id="对象关系映射（hbm）常用配置"><a href="#对象关系映射（hbm）常用配置" class="headerlink" title="对象关系映射（hbm）常用配置"></a>对象关系映射（hbm）常用配置</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span></span></span><br><span class="line"><span class="tag">   	<span class="attr">schema</span>=<span class="string">"schemaName"</span></span></span><br><span class="line"><span class="tag">   	<span class="attr">catalog</span>=<span class="string">"catalogName"</span></span></span><br><span class="line"><span class="tag">   	<span class="attr">default-cascade</span>=<span class="string">"cascade_style"</span> //级联风格</span></span><br><span class="line"><span class="tag">   	<span class="attr">default-access</span>=<span class="string">"field|property|ClassName"</span> //访问策略</span></span><br><span class="line"><span class="tag">   	<span class="attr">default-lazy</span>=<span class="string">"true|false"</span> //加载策略</span></span><br><span class="line"><span class="tag">   	<span class="attr">package</span>=<span class="string">"packagename"</span></span></span><br><span class="line"><span class="tag">   /&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">class</span></span></span><br><span class="line"><span class="tag">   	<span class="attr">name</span>=<span class="string">"ClassName"</span> //对象关系映射 映射的哪个类</span></span><br><span class="line"><span class="tag">   	<span class="attr">table</span>=<span class="string">"tableName"</span>//把类映射成数据库中的哪张表</span></span><br><span class="line"><span class="tag">   	<span class="attr">batch-size</span>=<span class="string">"N"</span>//抓取策略 一次抓取多少条记录</span></span><br><span class="line"><span class="tag">   	<span class="attr">where</span>=<span class="string">"condition"</span>//设置的抓取条件</span></span><br><span class="line"><span class="tag">   	<span class="attr">entity-name</span>=<span class="string">"EntityName"</span>//支持同一个类映射多张表</span></span><br><span class="line"><span class="tag">   /&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">id</span></span></span><br><span class="line"><span class="tag">   	<span class="attr">name</span>=<span class="string">"propertyName"</span> //映射的哪个属性</span></span><br><span class="line"><span class="tag">   	<span class="attr">type</span>=<span class="string">"typename"</span>//数据类型</span></span><br><span class="line"><span class="tag">   	<span class="attr">column</span>=<span class="string">"colum_name"</span>//映射成数据库的表当中的字段名称</span></span><br><span class="line"><span class="tag">   	<span class="attr">length</span>=<span class="string">"length"</span>//指定长度</span></span><br><span class="line">   	&lt;generator class="generatorClass"/&gt;//主键生成策略</span><br><span class="line">   /&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="主键生成策略"><a href="#主键生成策略" class="headerlink" title="主键生成策略"></a>主键生成策略</h2><ul>
+<li><p>native<br>适用于代理主键。根据底层数据库对自动生成标识符的方式，自动选择identity、sequence或hilo。</p>
+</li>
+<li><p>assigned<br>适用于自然主键。由Java应用程序福泽生成标识符。</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Hibernate/" rel="tag"># Hibernate</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/03/20170403Python网络爬虫/" rel="next" title="Python网络爬虫">
+                <i class="fa fa-chevron-left"></i> Python网络爬虫
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/21/20170521落叶焚/" rel="prev" title="落叶焚">
+                落叶焚 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/boy.jpg"
+                alt="geekdoe" />
+            
+              <p class="site-author-name" itemprop="name">geekdoe</p>
+              <p class="site-description motion-element" itemprop="description">落叶焚いて野守の神を见し夜かな</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/geekdoe" target="_blank" title="GitHub">
+                      GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://blog.csdn.net/geekdoe" target="_blank" title="CSDN">
+                      CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hibernate的执行流程"><span class="nav-number">1.</span> <span class="nav-text">Hibernate的执行流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hibernate-cgt-xml常用配置"><span class="nav-number">2.</span> <span class="nav-text">hibernate.cgt.xml常用配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#session简介"><span class="nav-number">3.</span> <span class="nav-text">session简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#transaction简介"><span class="nav-number">4.</span> <span class="nav-text">transaction简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#session详解"><span class="nav-number">5.</span> <span class="nav-text">session详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获得session对象"><span class="nav-number">5.1.</span> <span class="nav-text">获得session对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openSession和getCurrentSession的区别"><span class="nav-number">5.2.</span> <span class="nav-text">openSession和getCurrentSession的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象关系映射（hbm）常用配置"><span class="nav-number">6.</span> <span class="nav-text">对象关系映射（hbm）常用配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主键生成策略"><span class="nav-number">6.1.</span> <span class="nav-text">主键生成策略</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">geekdoe</span>
+
+  
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
